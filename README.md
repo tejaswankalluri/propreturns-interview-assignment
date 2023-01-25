@@ -40,8 +40,8 @@
 
 -   UI Output
 
-    ![terminal_output]()
+    ![terminal_output](https://github.com/tejaswankalluri/propreturns-interview-assignment/blob/main/docs/outupt_ui.png?raw=true)
 
 -   Graphql Api
 
-    ![output]()
+    ![output](https://github.com/tejaswankalluri/propreturns-interview-assignment/blob/main/docs/apigraphql.png?raw=true)
