@@ -1,13 +1,45 @@
 import useToggle from "@/hooks/useToggle";
 import Image from "next/image";
 import propreturnImg from "@/img/logo_best.jpg";
+import { motion } from "framer-motion";
+import { slideIn } from "@/util/matine";
+
+const container = {
+    hidden: { opacity: 1 },
+    visible: {
+        opacity: 1,
+        transition: {
+            delayChildren: 0.3,
+            staggerChildren: 0.2,
+        },
+    },
+};
+
+const item = {
+    hidden: { opacity: 0 },
+    visible: {
+        opacity: 1,
+        transition: {
+            type: "spring",
+            stiffness: 30,
+        },
+    },
+};
+
 export default function Navbar() {
     const [isToggleNavButton, SetToggleNavButton] = useToggle();
+
     return (
         <>
-            <nav className="bg-white border-gray-200 px-2 sm:px-4 py-2.5">
+            <motion.nav
+                variants={container}
+                initial="hidden"
+                animate="visible"
+                className="bg-concrete-100 px-2 sm:px-4 py-2.5"
+            >
                 <div className="container flex flex-wrap items-center justify-between mx-auto">
-                    <a
+                    <motion.a
+                        variants={slideIn("right", "spring", 0.4, 2)}
                         href="https://propreturns.com"
                         className="flex items-center"
                     >
@@ -17,15 +49,14 @@ export default function Navbar() {
                             width={130}
                             alt="Flowbite Logo"
                         />
-                    </a>
-                    <div className="flex md:order-2">
+                    </motion.a>
+                    <motion.div
+                        variants={slideIn("right", "spring", 0.4, 2)}
+                        className="flex md:order-2"
+                    >
                         <button
                             type="button"
                             className="flex mr-3 text-sm  rounded-full md:mr-0 focus:ring-4 focus:ring-gray-300"
-                            id="user-menu-button"
-                            aria-expanded="false"
-                            data-dropdown-toggle="user-dropdown"
-                            data-dropdown-placement="bottom"
                         >
                             <span className="sr-only">Open user menu</span>
                             <img
@@ -58,7 +89,7 @@ export default function Navbar() {
                                 ></path>
                             </svg>
                         </button>
-                    </div>
+                    </motion.div>
                     <div
                         className={
                             !isToggleNavButton
@@ -68,51 +99,52 @@ export default function Navbar() {
                         id="navbar-cta"
                     >
                         <ul className="flex flex-col p-4 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium md:border-0 md:bg-white">
-                            <li>
+                            <motion.li variants={item}>
                                 <a
                                     href="#"
-                                    className="block py-2 pl-3 pr-4 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0"
+                                    className="block py-2 pl-3 pr-4 text-white bg-havelock-blue-400  md:bg-transparent md:text-havelock-blue-400 md:p-0 border-b-2 border-havelock-blue-400"
                                     aria-current="page"
                                 >
                                     Home
                                 </a>
-                            </li>
-                            <li>
+                            </motion.li>
+                            <motion.li variants={item}>
                                 <a
                                     href="#"
-                                    className="block py-2 pl-3 pr-4 text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 "
+                                    className="block py-2 pl-3 pr-4 text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-havelock-blue-400 md:p-0 "
                                 >
                                     About
                                 </a>
-                            </li>
-                            <li>
+                            </motion.li>
+                            <motion.li variants={item}>
                                 <a
                                     href="#"
-                                    className="block py-2 pl-3 pr-4 text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 "
+                                    className="block py-2 pl-3 pr-4 text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent
+                                   md:hover:text-havelock-blue-400 md:p-0 "
                                 >
                                     Help
                                 </a>
-                            </li>
-                            <li>
+                            </motion.li>
+                            <motion.li variants={item}>
                                 <a
                                     href="#"
-                                    className="block py-2 pl-3 pr-4 text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0"
+                                    className="block py-2 pl-3 pr-4 text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-havelock-blue-400 md:p-0"
                                 >
                                     Real Estate Agents
                                 </a>
-                            </li>
-                            <li>
+                            </motion.li>
+                            <motion.li variants={item}>
                                 <a
                                     href="#"
-                                    className="block py-2 pl-3 pr-4 text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0"
+                                    className="block py-2 pl-3 pr-4 text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-havelock-blue-400 md:p-0"
                                 >
                                     Blog
                                 </a>
-                            </li>
+                            </motion.li>
                         </ul>
                     </div>
                 </div>
-            </nav>
+            </motion.nav>
         </>
     );
 }
