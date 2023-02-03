@@ -1,30 +1,12 @@
 import useToggle from "@/hooks/useToggle";
 import Image from "next/image";
-import propreturnImg from "@/img/logo_best.jpg";
+import propreturnImg from "@/img/logo.png";
 import { motion } from "framer-motion";
-import { slideIn } from "@/util/matine";
-
-const container = {
-    hidden: { opacity: 1 },
-    visible: {
-        opacity: 1,
-        transition: {
-            delayChildren: 0.3,
-            staggerChildren: 0.2,
-        },
-    },
-};
-
-const item = {
-    hidden: { opacity: 0 },
-    visible: {
-        opacity: 1,
-        transition: {
-            type: "spring",
-            stiffness: 30,
-        },
-    },
-};
+import { slideIn } from "@/util/motion";
+import {
+    motionItem as item,
+    motionContainer as container,
+} from "@/util/motion";
 
 export default function Navbar() {
     const [isToggleNavButton, SetToggleNavButton] = useToggle();
@@ -35,7 +17,7 @@ export default function Navbar() {
                 variants={container}
                 initial="hidden"
                 animate="visible"
-                className="bg-concrete-100 px-2 sm:px-4 py-2.5"
+                className="px-2 sm:px-4 py-2.5"
             >
                 <div className="container flex flex-wrap items-center justify-between mx-auto">
                     <motion.a
@@ -51,7 +33,7 @@ export default function Navbar() {
                         />
                     </motion.a>
                     <motion.div
-                        variants={slideIn("right", "spring", 0.4, 2)}
+                        variants={slideIn("down", "spring", 0.2, 0.2)}
                         className="flex md:order-2"
                     >
                         <button
@@ -98,7 +80,7 @@ export default function Navbar() {
                         }
                         id="navbar-cta"
                     >
-                        <ul className="flex flex-col p-4 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium md:border-0 md:bg-white">
+                        <ul className="flex flex-col p-4 mt-4 border border-gray-100 rounded-lg md:flex-row md:gap-5 md:space-x-8 md:mt-0 md:text-sm md:font-medium md:border-0">
                             <motion.li variants={item}>
                                 <a
                                     href="#"

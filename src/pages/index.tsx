@@ -1,6 +1,8 @@
 import Head from "next/head";
 import Navbar from "@/components/navbar";
 import Cards from "@/components/cards";
+import DropDownButton from "@/components/buttons/dropdownbutton";
+import Filter from "@/components/filter";
 
 export default function Home() {
     return (
@@ -26,6 +28,9 @@ export default function Home() {
                         </div>
                     </div>
                 </section> */}
+                <div className="container mx-auto">
+                    <Filter />
+                </div>
             </main>
         </>
     );

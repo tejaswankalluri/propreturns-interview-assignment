@@ -4,10 +4,13 @@ module.exports = {
     content: ["./src/**/*.{js,ts,jsx,tsx}"],
     theme: {
         extend: {
+            fontFamily: {
+                "dm-sans": ["DM Sans", "sans-serif"],
+            },
             colors: {
                 concrete: {
                     50: "#f8f8f8",
-                    100: "#f3f3f3",
+                    100: "#f3f3f3", // primary
                     200: "#e4e4e4",
                     300: "#d1d1d1",
                     400: "#b4b4b4",
@@ -27,14 +30,14 @@ module.exports = {
                     600: "#515151",
                     700: "#434343",
                     800: "#383838",
-                    900: "#161616",
+                    900: "#161616", // primary
                 },
                 "havelock-blue": {
                     50: "#f3f6fc",
                     100: "#e5eef9",
                     200: "#c6dbf1",
                     300: "#94bde5",
-                    400: "#468fd1",
+                    400: "#468fd1", // primary
                     500: "#357ec2",
                     600: "#2564a4",
                     700: "#1f5085",

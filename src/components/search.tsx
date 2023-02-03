@@ -1,15 +1,22 @@
 import { useEffect, useState } from "react";
-
+import { motion } from "framer-motion";
+import { motionItem } from "@/util/motion";
 interface Iprop {
     searchFunc: (text: string) => void;
 }
 export default function SearchBox(prop: Iprop) {
     const [input, setInput] = useState("");
+
     useEffect(() => {
-        prop.searchFunc(input);
+        // debounce for delay in search text
+        const SetInputWithDelay = setTimeout(() => {
+            prop.searchFunc(input);
+        }, 2000);
+        return () => clearTimeout(SetInputWithDelay);
     }, [input]);
+
     return (
-        <div className="search fixed z-40 w-11/12 bottom-10 md:absolute md:top-20 md:z-0">
+        <motion.div variants={motionItem} className="search">
             <label
                 htmlFor="default-search"
                 className="mb-2 text-sm font-medium text-gray-900 sr-only "
@@ -37,13 +44,13 @@ export default function SearchBox(prop: Iprop) {
                 <input
                     type="search"
                     id="default-search"
-                    className="block w-full p-4 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 "
+                    className="block w-full px-5 py-3 pl-10 text-sm text-gray-900 border rounded-lg bg-concrete-100 focus:ring-blue-500 focus:border-blue-500 outline-none"
                     placeholder="Search Property"
                     required
                     value={input}
                     onChange={(e) => setInput(e.target.value)}
                 />
             </div>
-        </div>
+        </motion.div>
     );
 }
